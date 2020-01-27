@@ -21,7 +21,6 @@
 {% block content-left %}{% endblock %}
 
 {% block container %}
-
     {% block content %}
 
         {% if form.errors and not form.non_field_errors and not form.this_is_the_login_form.errors %}
@@ -45,8 +44,13 @@
                 {% endfor %}
             {% endif %}
         {% endif %}
+        <div class="branding" style="text-align: center;">
+            <h1> {% trans 'Sign Up' %}</h1>
+
+        </div>
 
         <div id="content-main">
+            
             <h1><i class="icon-lock icon-white"></i> {{ 'ADMIN_NAME'|suit_conf }}</h1>
 
             <form action="{{ app_path }}" method="post" id="login-form"><div class="hide">{% csrf_token %}</div>
