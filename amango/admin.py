@@ -10,14 +10,15 @@ from profiles.models import Profile
 
 class UserAdmin(AdminSite):
     login_form = AuthenticationForm
-
+    template = '/templates/base.html'
     def has_permission(self, request):
         """
         Removed check for is_staff.
         """
         return request.user.is_active
-
+        
 user_admin_site = UserAdmin(name='usersadmin')
+user_admin_site.index_template = "base.html"
 user_admin_site.register(Profile, ProfileAdmin)
 # Run user_admin_site.register() for each model we wish to register
 # for our admin interface for users
