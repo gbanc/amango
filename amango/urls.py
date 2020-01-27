@@ -17,8 +17,10 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.urls import path
 from amango.admin import user_admin_site
+from amango import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', user_admin_site.urls),
+    url(r'^', user_admin_site.urls, name='home'),
+    url(r'^signup/$', views.signup, name='signup'),
 ]

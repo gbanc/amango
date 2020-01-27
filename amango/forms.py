@@ -1,6 +1,11 @@
 
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm
+
 from django import forms
+
+from users.models import User
+
 
 class UserAdminAuthenticationForm(AuthenticationForm):
     """
@@ -12,3 +17,11 @@ class UserAdminAuthenticationForm(AuthenticationForm):
                                 error_messages={'required':
                                 "Please log in again, because your session has"
                                 " expired."})
+
+
+class SignUpForm(UserCreationForm):
+    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+
+    class Meta:
+        model = User
+        fields = ('email', 'password1', 'password2', )
