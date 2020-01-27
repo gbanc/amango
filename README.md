@@ -1,0 +1,2 @@
+# amango
+Django App
