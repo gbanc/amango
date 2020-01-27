@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-
+import django_heroku
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -138,3 +138,5 @@ SUIT_CONFIG = {
     'HEADER_TIME_FORMAT': 'h:i a',
     'SEARCH_URL': '',
 }
+
+django_heroku.settings(locals())
