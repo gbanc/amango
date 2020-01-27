@@ -14,3 +14,9 @@ class ProfileAdmin(admin.ModelAdmin):
         # associating the current logged in user to the client_id
         obj.user = request.user
         super().save_model(request, obj, form, change)
+
+    def get_queryset(self, request):
+        qs = super(ProfileAdmin, self).get_queryset(request)
+        if request.user.is_admin:
+            return qs
+        return qs.filter(user_id=request.user)
