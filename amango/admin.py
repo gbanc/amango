@@ -1,10 +1,15 @@
 from django.contrib import admin
 from django.contrib.admin.sites import AdminSite
+from django.contrib.auth.forms import AuthenticationForm
+
+# Run admin.site.register() for each model we wish to register
+# with the REAL django admin!
+from profiles.admin import ProfileAdmin
 from profiles.models import Profile
-from amango.forms import UserAdminAuthenticationForm
+
 
 class UserAdmin(AdminSite):
-    login_form = UserAdminAuthenticationForm
+    login_form = AuthenticationForm
 
     def has_permission(self, request):
         """
@@ -13,9 +18,6 @@ class UserAdmin(AdminSite):
         return request.user.is_active
 
 user_admin_site = UserAdmin(name='usersadmin')
-user_admin_site.register(Profile)
+user_admin_site.register(Profile, ProfileAdmin)
 # Run user_admin_site.register() for each model we wish to register
 # for our admin interface for users
-
-# Run admin.site.register() for each model we wish to register
-# with the REAL django admin!

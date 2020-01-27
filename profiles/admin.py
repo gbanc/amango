@@ -1,4 +1,16 @@
 from django.contrib import admin
+
+from profiles.forms import AddProfileForm
+from users.models import User
+
 from .models import Profile
+
 # Register your models here.
-admin.site.register(Profile)
+
+class ProfileAdmin(admin.ModelAdmin):
+    # fields = ('seller_id', 'mws_auth_token', 'marketplace_id')
+    exclude = ('user',)
+    def save_model(self, request, obj, form, change):
+        # associating the current logged in user to the client_id
+        obj.user = request.user
+        super().save_model(request, obj, form, change)
