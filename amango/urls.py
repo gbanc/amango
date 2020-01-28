@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', user_admin_site.urls, name='home'),
     url(r'^signup/$', views.signup, name='signup'),
+    url(r'^django-rq/', include('django_rq.urls')),
 ]

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
     'profiles.apps.ProfilesConfig',
+    'django_rq',
 ]
 
 
@@ -138,5 +139,14 @@ SUIT_CONFIG = {
     'HEADER_TIME_FORMAT': 'h:i a',
     'SEARCH_URL': '',
 }
+
+RQ_QUEUES = {
+    'default': {
+        'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379/0'), # If you're on Heroku
+        'DEFAULT_TIMEOUT': 500,
+}
+
+
+
 
 django_heroku.settings(locals())

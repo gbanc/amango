@@ -3,6 +3,7 @@ Click==7.0
 dj-database-url==0.5.0
 Django==2.2
 django-heroku==0.3.1
+django-rq==2.2.0
 -e git+https://github.com/gbanc/django-suit@7cf85497cd4698ad479afda7aed377669c1c4622#egg=django_suit
 gunicorn==20.0.4
 psycopg2==2.7.3.2
