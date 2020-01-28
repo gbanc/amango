@@ -1,2 +1,2 @@
 web: gunicorn amango.wsgi
-worker: python worker.py
+worker: python manage.py rqworker high default low
