@@ -12,7 +12,7 @@ def count_stuff(range):
 
 def signup(request):
     r = range(1,4)
-    q.enqueue(count_stuff(), r)
+    q.enqueue(count_stuff, r)
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
