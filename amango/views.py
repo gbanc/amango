@@ -7,11 +7,12 @@ from worker import conn
 
 q = Queue(connection=conn)
 
-def count(range):
+def count_stuff(range):
     return sum(range)
+
 def signup(request):
     r = range(1,4)
-    q.enqueue(count, r)
+    q.enqueue(count_stuff(), r)
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
